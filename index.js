@@ -11,13 +11,11 @@ const connect = mongoose.connect(url, {
 connect.then(() => {
 
     console.log('Connected correctly to server');
-    //instantiate a new doc
-    const newCampsite = new Campsite({
+    //use model method create takes arg obj def new doc to create then auto saves so removed save
+    Campsite.create({
         name: 'React Lake Campground',
         description: 'test'
-    });
-
-    newCampsite.save()
+    })
     .then(campsite => {
         console.log(campsite);
         return Campsite.find();
